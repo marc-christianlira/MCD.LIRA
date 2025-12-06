@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MY Portfolio</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Inter","Roboto","system-ui","-apple-system","BlinkMacSystemFont","Helvetica Neue","sans-serif"]
+          },
+          colors: {
+            primary: { DEFAULT: "#6366f1", light: "#a5b4fc", dark: "#4f46e5" },
+            secondary: { DEFAULT: "#f97316", soft: "#fdba74" }
+          },
+          boxShadow: {
+            neon: "0 0 20px rgba(99,102,241,0.5)",
+            soft: "0 4px 20px rgba(0,0,0,0.1)"
+          },
+          borderRadius: { xl2: "1.3rem" }
+        }
+      }
+    };
+  </script>
+
+  <script>
+    function showTab(tabId) {
+      const sections = ["home","description","hobbies","skills"];
+      sections.forEach(id => document.getElementById(id).classList.add("hidden"));
+      document.getElementById(tabId).classList.remove("hidden");
+    }
+  </script>
+</head>
+
+<body id="mainBg" class="bg-cover bg-center transition-all duration-300">
+
+  <!-- TOP HEADER -->
+  <div id="topBg" class="w-full h-64 bg-cover bg-center relative transition-all duration-300">
+
+    <!-- Buttons -->
+    <div class="absolute top-4 left-1/2 transform -translate-x-1/2 flex gap-3 z-10">
+      <button onclick="showTab('home')" class="px-4 py-2 bg-primary text-white rounded-lg shadow-soft hover:bg-primary-dark transition">
+        Home
+      </button>
+      <button onclick="showTab('description')" class="px-4 py-2 bg-primary text-white rounded-lg shadow-soft hover:bg-primary-dark transition">
+        Description
+      </button>
+      <button onclick="showTab('hobbies')" class="px-4 py-2 bg-secondary text-white rounded-lg shadow-soft hover:bg-secondary-soft transition">
+        Hobbies
+      </button>
+      <button onclick="showTab('skills')" class="px-4 py-2 bg-primary-dark text-white rounded-lg shadow-soft hover:bg-primary transition">
+        Skills
+      </button>
+    </div>
+
+    <!-- Profile -->
+    <div class="w-full h-full flex justify-center items-end pb-5 bg-black/40">
+      <img src="123.JPG" alt="MY PICTURE"
+           class="w-32 h-32 rounded-full border-4 border-white shadow-neon object-cover">
+    </div>
+  </div>
+
+  <!-- Name -->
+  <div class="text-center mt-4 text-white drop-shadow-lg">
+    <h1 class="text-2xl font-bold text-primary-light">Marc Christian D. Lira</h1>
+    <p class="text-gray-200">Working Student • Gamer • Learner</p>
+  </div>
+
+  <!-- Content Box -->
+  <div class="max-w-xl mx-auto mt-6 bg-white/30 p-6 rounded-xl2 shadow-neon text-white">
+
+    <!-- HOME -->
+    <div id="home">
+      <h2 class="text-2xl font-bold text-primary-light text-center">My Portfolio</h2>
+      <p id="motivationText" class="text-center mt-4 text-gray-200 text-lg"></p>
+    </div>
+
+    <!-- DESCRIPTION -->
+    <div id="description" class="hidden">
+      <h2 class="text-xl font-semibold mb-2 text-primary-light">About Me</h2>
+      <p class="leading-relaxed">
+        I’m someone who’s focused on building a solid and meaningful future.
+        My main goals are to graduate and secure a stable job, giving me a strong foundation in life.
+        I’m driven not only by my own dreams but also by my desire to help my parents have a good and comfortable life.
+
+        <br><br>
+        I also have a love for discovery — I want to explore many beautiful places in the Philippines 
+        with my girlfriend, creating memories and enjoying new experiences together.
+
+        <br><br>
+        I’m motivated, determined, and guided by personal growth, love, and family.
+      </p>
+    </div>
+
+    <!-- HOBBIES -->
+    <div id="hobbies" class="hidden">
+      <h2 class="text-xl font-semibold mb-2 text-secondary-soft">Hobbies</h2>
+      <ul class="list-disc ml-6">
+        <li>Gaming</li>
+        <li>Listening to music</li>
+        <li>Learning new technology</li>
+        <li>Watching movies</li>
+        <li>Hanging out with my pretty girl</li>
+      </ul>
+    </div>
+
+    
+    <div id="skills" class="hidden">
+      <h2 class="text-xl font-semibold mb-2 text-primary-light">Skills</h2>
+      <ul class="list-disc ml-6">
+        <li>Time management</li>
+        <li>Balancing work & studies</li>
+        <li>Team communication</li>
+        <li>Fast learner</li>
+      </ul>
+    </div>
+  </div>
+
+ 
+  <script>
+    
+    const mainBackgrounds = [
+      "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3",
+      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+      "https://images.unsplash.com/photo-1454789476662-53eb23ba5907",
+      "https://images.unsplash.com/photo-1503264116251-35a269479413",
+      "https://images.unsplash.com/photo-1462331940025-496dfbfc7564"
+    ];
+
+    const topBackgrounds = [
+      "https://images.unsplash.com/photo-1535223289827-42f1e9919769",
+      "https://images.unsplash.com/photo-1482192596544-9eb780fc7f66",
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+      "https://images.unsplash.com/photo-1518770660439-4636190af475",
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+    ];
+
+    function setBackgrounds() {
+      document.getElementById("mainBg").style.backgroundImage =
+        `url('${mainBackgrounds[Math.floor(Math.random() * mainBackgrounds.length)]}')`;
+      document.getElementById("topBg").style.backgroundImage =
+        `url('${topBackgrounds[Math.floor(Math.random() * topBackgrounds.length)]}')`;
+    }
+
+    setBackgrounds(); // apply once
+
+    // Motivation Text
+    const motivationMessages = [
+      "Even if studying is hard because of lack of finance, keep pushing forward—your future is worth it!",
+      "Every challenge is a step closer to your dream. Never give up!",
+      "Hard work beats talent when talent doesn’t work hard. Keep going!",
+      "Stay strong, stay focused, and let your determination shine.",
+      "Financial struggles are temporary, knowledge is forever. Keep learning!"
+    ];
+
+    document.getElementById("motivationText").innerText =
+      motivationMessages[Math.floor(Math.random() * motivationMessages.length)];
+  </script>
+
+</body>
+</html>
